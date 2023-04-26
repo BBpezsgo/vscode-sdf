@@ -1,0 +1,53 @@
+{
+  "name": "sdf",
+  "displayName": "SDF",
+  "description": "SDF syntax higlighting",
+  "version": "0.0.1",
+  "publisher": "BB",
+  "private": true,
+  "engines": {
+    "vscode": "^1.69.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "sdf",
+        "aliases": [
+          "SDF",
+          "sdf"
+        ],
+        "extensions": [
+          ".sdf"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "dark": "icon.svg",
+          "light": "icon.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "sdf",
+        "scopeName": "source.sdf",
+        "path": "./syntaxes/sdf.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@types/vscode": "^1.73.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "typescript": "^4.9.4"
+  }
+}

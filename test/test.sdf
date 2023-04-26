@@ -1,0 +1,70 @@
+Tag: Entity
+ID: 67676767676723453453456
+Components: {
+    SpriteRenderer: {
+        SpriteName: APC.png
+        SpriteName: "APC.png"
+    }
+    Shadow: {
+        Offset: 0.1
+    }
+    BoxCollider: {
+        Width: 8
+        Height: 10
+    }
+    Rigidbody: { }
+    NetworkObject: { }
+    VehicleEngine: {
+        MoveSpeedMax: 75
+        Effects: [ Water ]
+    }
+    VehicleAI: {
+        CollisionStart: 6
+        CollisionCheckDistance: 20
+        CollisionCheckSidewaysAngle: 20
+        UseBrakingCalculations: true
+        DistanceToRemoveWaypoint: 0
+    }
+    Saveable: { }
+    Entity: {
+        Type: Vehicle
+        CanAttack: true
+        Team: MY
+    }
+    CollisionEffect: { }
+    CalculateRequiedShoots: { }
+    Headlights: {
+        TrunOnAt: 0.6
+        Headlights: [
+            {
+                OffsetX: 0
+                OffsetY: 5.357544
+
+                Rotation: 0
+
+                InnerRadius: 0
+                OuterRadius: 15
+                
+                InnerSpotAngle: 53.36
+                OuterSpotAngle: 168.91
+            }
+        ]
+    }
+    UniversalAI: {
+        Selectable: true
+        EnableDamagedEffects: true
+        Health: 40
+        CanTakeControl: true
+        CanBeDefender: true
+        CanAttack: true
+        UseRequiedShootCalculations: true
+        DistanceToAttach: 190
+        Team: MY
+        MinimapMarker: {
+            Type: Vehicle
+        }
+        Turret: {
+            
+        }
+    }
+}
