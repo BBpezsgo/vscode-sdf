@@ -165,18 +165,9 @@ class DocumentSemanticTokensProvider implements vscode.DocumentSemanticTokensPro
                 return
             }
 
-            let isReference = false
-            const referenceStart = currentCharacter
-            if (CurrentCharacter() == '&')
-            {
-                ConsumeNext()
-                ConsumeCharacters(WhitespaceCharacters)
-                isReference = true
-            }
-
             if (CurrentCharacter() === '"')
             {
-                const stringStartChar = isReference ? referenceStart : currentCharacter
+                const stringStartChar = currentCharacter
 
                 ConsumeNext()
                 ConsumeUntil("\"")
@@ -186,28 +177,20 @@ class DocumentSemanticTokensProvider implements vscode.DocumentSemanticTokensPro
                     line: currentLine,
                     startCharacter: stringStartChar,
                     length: currentCharacter - stringStartChar,
-                    tokenType: isReference ? 'variable' : 'string',
-                    tokenModifiers: isReference ? [ 'readonly' ] : [ ],
+                    tokenType: 'string',
+                    tokenModifiers: [ ],
                 })
                 return
             }
 
-            const anyLiteralStart = isReference ? referenceStart : currentCharacter
+            const anyLiteralStart = currentCharacter
             const anyLiteral = ConsumeUntil('{\r\n \t\0,')
             let tokenType: string | null = 'string'
             
             if ([ 'true', 'false', 'yes', 'no' ].includes(anyLiteral)) tokenType = null
             else if (!Number.isNaN(+anyLiteral)) tokenType = 'number'
 
-            if (isReference) {
-                result.push({
-                    line: currentLine,
-                    startCharacter: anyLiteralStart,
-                    length: currentCharacter - anyLiteralStart,
-                    tokenType: 'variable',
-                    tokenModifiers: [ 'readonly' ],
-                })
-            } else if (tokenType) {
+            if (tokenType) {
                 result.push({
                     line: currentLine,
                     startCharacter: anyLiteralStart,

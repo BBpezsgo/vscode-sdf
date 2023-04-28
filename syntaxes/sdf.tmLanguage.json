@@ -37,7 +37,20 @@
 						"0": {
 							"name": "punctuation.definition.string.end.sdf"
 						}
-					}
+					},
+					"patterns": [
+						{
+							"include": "#string_escaped_char"
+						}
+					]
+				}
+			]
+		},
+		"string_escaped_char": {
+			"patterns": [
+				{
+					"match": "(?x)\\\\.",
+					"name": "constant.character.escape.sdf"
 				}
 			]
 		},
