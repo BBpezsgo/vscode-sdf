@@ -28,6 +28,16 @@
           "dark": "icon.svg",
           "light": "icon.svg"
         }
+      },
+      {
+        "id": "sdf2",
+        "aliases": [
+          "SDF Types"
+        ],
+        "extensions": [
+          ".sdftypes"
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [

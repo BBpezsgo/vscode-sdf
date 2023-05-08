@@ -1,5 +1,9 @@
+--type: test
 Tag: Entity
 ID: 67676767676723453453456
+Components: {
+    
+}
 Components: {
     SpriteRenderer: {
         SpriteName: APC.png
